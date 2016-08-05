@@ -8,30 +8,26 @@
 (setq package-check-signature nil)
 
 (defvar my-packages '(ac-js2
+                      ag
                       atom-one-dark-theme
-                      anzu
                       cider
                       clojure-mode-extra-font-locking
                       coffee-mode
                       company
                       company-web
+                      counsel
                       dash
                       diff-hl
                       dumb-jump
-                      find-file-in-repository
                       flx
-                      flx-ido
-                      flx-isearch
                       highlight-parentheses
-                      ido-vertical-mode
-                      ido-ubiquitous
-                      ido-completing-read+
                       indent-guide
                       jekyll-modes
                       jquery-doc
                       js3-mode
                       json-mode
                       markdown-mode
+                      material-theme
                       mustache-mode
                       neotree
                       powerline
@@ -44,6 +40,7 @@
                       smex
                       smooth-scrolling
                       spaceline
+		                  swiper
                       systemd
                       tabbar
                       undo-tree

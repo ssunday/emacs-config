@@ -13,61 +13,40 @@
 (set-face-foreground 'neo-file-link-face "grey88")
 (global-set-key (kbd "M-t") 'neotree-toggle)
 
+;;Random Settings
+
 (setq backup-inhibited t)
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
 ;;Auto Completion
 
-(require 'flx-ido)
-(require 'ido-vertical-mode)
-(require 'ido-ubiquitous)
 (require 'company)
 (require 'jquery-doc)
-(require 'dumb-jump)
-
-(global-set-key (kbd "M-s g") 'dumb-jump-go)
-(global-set-key (kbd "M-s b") 'dumb-jump-back)
-
-(ido-mode t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
-
-(ido-everywhere 1)
-(flx-ido-mode 1)
-(ido-ubiquitous-mode 1)
-(ido-vertical-mode 1)
 
 (add-hook 'after-init-hook 'global-company-mode)
-(require 'company-web-html)
 
+(require 'company-web-html)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 (add-hook 'js2-mode-hook 'jquery-doc-setup)
 
 (setq company-tooltip-limit 20)
 (setq company-idle-delay .3)
 
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
 (global-auto-revert-mode t)
 
 ;;Switch Buffer
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
 ;;Comment region
+
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 
 ;;Undo-Redo key-mappings
+
 (defalias 'redo 'undo-tree-redo)
 
 (global-set-key (kbd "C-z") 'undo)
@@ -86,12 +65,36 @@
 
 ;;Find stuff
 
-(global-unset-key (kbd "s-p"))
-(global-unset-key (kbd "s-F"))
-(global-unset-key (kbd "s-r"))
+(require 'dumb-jump)
 
-(global-set-key (kbd "s-p") 'find-file-in-repository)
-(global-set-key (kbd "s-F") 'rgrep)
+(global-set-key (kbd "M-s g") 'dumb-jump-go)
+(global-set-key (kbd "M-s b") 'dumb-jump-back)
+
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-initial-inputs-alist nil)
+(setq ivy-re-builders-alist
+      '((ivy-switch-buffer . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
+(setq ivy-initial-inputs-alist nil)
+
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "s-p") 'counsel-git)
+(global-set-key (kbd "s-F") 'ag)
 (global-set-key (kbd "s-r") 'replace-string)
+
+(setq ag-highlight-search t)
+(setq ag-reuse-window t)
+(setq ag-reuse-buffers t)
+
+(defun set-exec-path-from-shell-PATH ()
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(set-exec-path-from-shell-PATH)
 
 (provide 'general)

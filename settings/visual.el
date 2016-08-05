@@ -27,6 +27,7 @@
 (delete-selection-mode t)
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
+(menu-bar-mode -1)
 
 (eval-after-load 'diff-mode
   '(progn
@@ -38,9 +39,10 @@
      (set-face-foreground 'magit-diff-add "green4")
      (set-face-foreground 'magit-diff-del "red3")))
 
-(load-theme 'atom-one-dark t)
+(if window-system
+  (load-theme 'atom-one-dark t)
+  (load-theme 'material t))
 
-(global-anzu-mode +1)
 (require 'spaceline-config)
 (spaceline-emacs-theme)
 
@@ -76,12 +78,5 @@
     1 'font-lock-func-face)))
 
 (require 'clojure-mode-extra-font-locking)
-
-(require 'ansi-color)
-(defun colorize-compilation-buffer ()
-  (toggle-read-only)
-  (ansi-color-apply-on-region (point-min) (point-max))
-  (toggle-read-only))
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (provide 'visual)
