@@ -15,6 +15,7 @@
 
 ;;Random Settings
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq backup-inhibited t)
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
@@ -22,13 +23,20 @@
 ;;Auto Completion
 
 (require 'company)
-(require 'jquery-doc)
+(require 'company-web-html)
+
+(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-(require 'company-web-html)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(add-hook 'js2-mode-hook 'jquery-doc-setup)
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+
+(setq js-indent-level 2)
+(setq css-indent-offset 2)
+
+(add-to-list 'company-backends 'company-tern)
 
 (setq company-tooltip-limit 20)
 (setq company-idle-delay .3)
@@ -37,7 +45,6 @@
 
 ;;Switch Buffer
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
@@ -71,6 +78,7 @@
 (global-set-key (kbd "M-s b") 'dumb-jump-back)
 
 (ivy-mode 1)
+
 (setq ivy-use-virtual-buffers t)
 (setq ivy-initial-inputs-alist nil)
 (setq ivy-re-builders-alist
@@ -82,6 +90,7 @@
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "s-p") 'counsel-git)
+(global-set-key (kbd "s-f") 'swiper)
 (global-set-key (kbd "s-F") 'ag)
 (global-set-key (kbd "s-r") 'replace-string)
 

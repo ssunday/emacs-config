@@ -7,7 +7,7 @@
   (if window-system
   (progn
     (if (> (x-display-pixel-width) 1280)
-           (add-to-list 'default-frame-alist (cons 'width 140))
+           (add-to-list 'default-frame-alist (cons 'width 190))
            (add-to-list 'default-frame-alist (cons 'width 90)))
     (add-to-list 'default-frame-alist
          (cons 'height (/ (- (x-display-pixel-height) 90)
@@ -16,7 +16,9 @@
 (set-frame-size-according-to-resolution)
 
 (global-linum-mode t)
+(hlinum-activate)
 (global-diff-hl-mode)
+(global-hl-line-mode 1)
 
 (setq inhibit-splash-screen t
       initial-scratch-message nil
@@ -42,6 +44,8 @@
 (if window-system
   (load-theme 'atom-one-dark t)
   (load-theme 'material t))
+  
+(mode-icons-mode)
 
 (require 'spaceline-config)
 (spaceline-emacs-theme)
@@ -49,11 +53,12 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-(global-hl-line-mode 1)
 (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
   (lambda () (rainbow-mode 1)))
 
 (my-global-rainbow-mode 1)
+
+(beacon-mode 1)
 
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
@@ -76,6 +81,7 @@
  'clojure-mode
  '(("(\\s-*\\(\\_<\\(?:\\sw\\|\\s_\\)+\\)\\_>"
     1 'font-lock-func-face)))
+
 
 (require 'clojure-mode-extra-font-locking)
 

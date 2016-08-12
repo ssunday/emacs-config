@@ -7,13 +7,15 @@
 
 (setq package-check-signature nil)
 
-(defvar my-packages '(ac-js2
-                      ag
+(defvar my-packages '(ag
                       atom-one-dark-theme
+                      auto-package-update
+		      beacon
                       cider
                       clojure-mode-extra-font-locking
                       coffee-mode
                       company
+		      company-tern
                       company-web
                       counsel
                       dash
@@ -21,13 +23,13 @@
                       dumb-jump
                       flx
                       highlight-parentheses
+		      hlinum
                       indent-guide
                       jekyll-modes
-                      jquery-doc
-                      js3-mode
                       json-mode
                       markdown-mode
                       material-theme
+		      mode-icons
                       mustache-mode
                       neotree
                       powerline
@@ -35,19 +37,25 @@
                       rainbow-delimiters
                       rainbow-mode
                       redo+
-                      slime
+		      sass-mode
+		      scss-mode
+		      slime
                       slim-mode
                       smex
                       smooth-scrolling
                       spaceline
-		                  swiper
+		      swiper
                       systemd
                       tabbar
+		      tern
                       undo-tree
                       web-mode))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;;(require 'auto-package-update)
+;;(auto-package-update-maybe)
 
 (provide 'packages)
