@@ -1,2 +1,2 @@
 # emacs-config
-My Emacs Config.
+My Emacs Config. Needs TERN for JS development.

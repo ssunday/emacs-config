@@ -15,14 +15,8 @@
 
 (set-frame-size-according-to-resolution)
 
-(global-linum-mode t)
-(hlinum-activate)
-(global-diff-hl-mode)
-(global-hl-line-mode 1)
-
 (setq inhibit-splash-screen t
-      initial-scratch-message nil
-      initial-major-mode 'org-mode)
+      initial-scratch-message nil)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -30,6 +24,11 @@
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
 (menu-bar-mode -1)
+
+(global-linum-mode t)
+(hlinum-activate)
+(global-diff-hl-mode)
+(global-hl-line-mode 1)
 
 (eval-after-load 'diff-mode
   '(progn
@@ -44,11 +43,25 @@
 (if window-system
   (load-theme 'atom-one-dark t)
   (load-theme 'material t))
-  
-(mode-icons-mode)
 
-(require 'spaceline-config)
-(spaceline-emacs-theme)
+(set-face-attribute 'mode-line nil :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
+
+(setq-default mode-line-format `(
+				 (:eval
+				  (if (buffer-modified-p)
+				      (propertize "\t%b    " 'face 'info-menu-star)
+				    (propertize "\t%b    " 'face 'success)))
+				 ,'(vc-mode vc-mode)
+				 ,(propertize "\t%m" 'face 'font-lock-string-face
+					      'help-echo buffer-file-coding-system)
+				 ,(propertize "\tLine" 'face 'custom-face-tag)
+				 " %l  "
+				 ,(propertize "  Column" 'face 'custom-face-tag)
+				 " %c\t"
+				 ,(propertize (format-time-string "\t%H:%M")
+					      'help-echo
+					      (format-time-string "%c; "))))
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -82,7 +95,8 @@
  '(("(\\s-*\\(\\_<\\(?:\\sw\\|\\s_\\)+\\)\\_>"
     1 'font-lock-func-face)))
 
-
 (require 'clojure-mode-extra-font-locking)
+
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (provide 'visual)

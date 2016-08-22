@@ -5,8 +5,9 @@
       neo-show-hidden-files t
       neo-banner-message nil
       neo-create-file-auto-open t
+      neo-dont-be-alone t
       neo-keymap-style 'concise
-      neo-window-width 25)
+      neo-window-width 30)
 
 (customize-set-value 'neo-keymap-style 'concise)
 (set-face-foreground 'neo-dir-link-face "SlateGray2")
@@ -14,6 +15,12 @@
 (global-set-key (kbd "M-t") 'neotree-toggle)
 
 ;;Random Settings
+
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq confirm-nonexistent-file-or-buffer nil)
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+	kill-buffer-query-functions))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq backup-inhibited t)
@@ -57,7 +64,6 @@
 (defalias 'redo 'undo-tree-redo)
 
 (global-set-key (kbd "C-z") 'undo)
-
 (global-set-key (kbd "C-S-z") 'redo)
 
 ;;Scrolling
@@ -73,26 +79,35 @@
 ;;Find stuff
 
 (require 'dumb-jump)
+(require 'flx)
 
 (global-set-key (kbd "M-s g") 'dumb-jump-go)
 (global-set-key (kbd "M-s b") 'dumb-jump-back)
 
 (ivy-mode 1)
-
 (setq ivy-use-virtual-buffers t)
 (setq ivy-initial-inputs-alist nil)
+
 (setq ivy-re-builders-alist
-      '((ivy-switch-buffer . ivy--regex-plus)
-        (t . ivy--regex-fuzzy)))
-(setq ivy-initial-inputs-alist nil)
+      '((read-file-name-internal . ivy--regex-fuzzy)
+	      (counsel-git . ivy--regex-fuzzy)
+        (t . ivy--regex-plus)))
+
+(setq ivy-display-style 'fancy)
 
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "s-p") 'counsel-git)
 (global-set-key (kbd "s-f") 'swiper)
-(global-set-key (kbd "s-F") 'ag)
 (global-set-key (kbd "s-r") 'replace-string)
+
+(if window-system
+  (progn
+    (global-set-key (kbd "s-F") 'ag)
+    (global-set-key (kbd "s-p") 'counsel-git))
+  (progn
+    (global-set-key (kbd "C-u") 'ag)
+    (global-set-key (kbd "M-p") 'counsel-git)))
 
 (setq ag-highlight-search t)
 (setq ag-reuse-window t)

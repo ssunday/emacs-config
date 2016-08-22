@@ -62,10 +62,15 @@
 
 (setq mac-command-key-is-meta nil)
 
-(global-set-key (kbd "s-<left>") 'tabbar-backward)
-(global-set-key (kbd "s-<right>") 'tabbar-forward)
+
+(if window-system
+  (progn
+    (global-set-key (kbd "s-<left>") 'tabbar-backward)
+    (global-set-key (kbd "s-<right>") 'tabbar-forward))
+  (progn
+    (global-set-key (kbd "M-[") 'tabbar-backward)
+    (global-set-key (kbd "M-]") 'tabbar-forward)))
 
 (tabbar-mode t)
-
 
 (provide 'tab)
