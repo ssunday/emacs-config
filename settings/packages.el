@@ -15,6 +15,7 @@
                       clojure-mode-extra-font-locking
                       coffee-mode
                       company
+		      company-go
 		      company-tern
                       company-web
                       counsel
@@ -24,6 +25,7 @@
                       enh-ruby-mode
                       evil
                       flx
+		      go-mode
                       highlight-parentheses
 		      hlinum
                       indent-guide
@@ -37,6 +39,7 @@
                       python-mode
                       rainbow-delimiters
                       rainbow-mode
+		      robe
                       rspec-mode
 		      sass-mode
 		      scss-mode

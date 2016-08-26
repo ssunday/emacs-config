@@ -27,21 +27,29 @@
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
+;;Modes
+
+;;JS
+
+(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(setq js-indent-level 2)
+
+;;Ruby
+
+(add-hook 'ruby-mode-hook 'robe-mode)
+
+;;CSS
+(setq css-indent-offset 2)
+
 ;;Auto Completion
 
 (require 'company)
 (require 'company-web-html)
 
-(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
-(autoload 'tern-mode "tern.el" nil t)
-
 (add-hook 'after-init-hook 'global-company-mode)
-
-(add-hook 'js-mode-hook (lambda () (tern-mode t)))
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-
-(setq js-indent-level 2)
-(setq css-indent-offset 2)
 
 (add-to-list 'company-backends 'company-tern)
 
@@ -76,13 +84,14 @@
 (require 'indent-guide)
 (indent-guide-global-mode)
 
-;;Find stuff
-
+;;Dumb Jump
 (require 'dumb-jump)
-(require 'flx)
-
 (global-set-key (kbd "M-s g") 'dumb-jump-go)
 (global-set-key (kbd "M-s b") 'dumb-jump-back)
+
+;;Finding/Searching
+
+(require 'flx)
 
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)

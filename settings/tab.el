@@ -58,10 +58,10 @@
  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
              ((eq major-mode 'dired-mode) "emacs")
              (t "user"))))
+
 (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
 (setq mac-command-key-is-meta nil)
-
 
 (if window-system
   (progn
