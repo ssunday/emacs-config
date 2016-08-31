@@ -40,8 +40,7 @@
  :background "gray20"
  :height 0.6)
 
-(custom-set-variables
- '(tabbar-separator (quote (0.7))))
+(set-face-attribute 'tabbar-separator nil :height 0.7)
 
 (defun tabbar-buffer-tab-label (tab)
   (let ((label  (if tabbar--buffer-show-groups
