@@ -1,21 +1,13 @@
-;;Neotree
-(require 'neotree)
-(setq neo-smart-open t
-      neo-show-header nil
-      neo-show-hidden-files t
-      neo-banner-message nil
-      neo-create-file-auto-open t
-      neo-dont-be-alone t
-      neo-keymap-style 'concise
-      neo-window-width 30)
+;;Buffers
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(customize-set-value 'neo-keymap-style 'concise)
-(set-face-foreground 'neo-dir-link-face "SlateGray2")
-(set-face-foreground 'neo-file-link-face "grey88")
-(global-set-key (kbd "M-t") 'neotree-toggle)
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
 
 ;;Random Settings
-
+(setq inhibit-startup-message t)
+(setq mac-command-key-is-meta nil)
+(delete-selection-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
@@ -26,101 +18,81 @@
 (setq backup-inhibited t)
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
-
-;;Modes
-
-;;JS
-
-(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
-(autoload 'tern-mode "tern.el" nil t)
-(add-hook 'js-mode-hook (lambda () (tern-mode t)))
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(setq js-indent-level 2)
-
-;;Ruby
-
-(add-hook 'ruby-mode-hook 'robe-mode)
-
-;;CSS
-(setq css-indent-offset 2)
-
-;;Auto Completion
-
-(require 'company)
-(require 'company-web-html)
-
-(add-hook 'after-init-hook 'global-company-mode)
-
-(add-to-list 'company-backends 'company-tern)
-
-(setq company-tooltip-limit 20)
-(setq company-idle-delay .3)
-
-(global-auto-revert-mode t)
-
-;;Switch Buffer
-
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-
-;;Comment region
+(global-auto-revert-mode)
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 
+
+;;Auto Completion
+
+(use-package company
+  :ensure t
+  :config (add-hook 'after-init-hook 'global-company-mode)
+          (setq company-tooltip-limit 20)
+	  (setq company-idle-delay .3))
+
 ;;Undo-Redo key-mappings
 
-(defalias 'redo 'undo-tree-redo)
-
-(global-set-key (kbd "C-z") 'undo)
-(global-set-key (kbd "C-S-z") 'redo)
-
-;;Scrolling
-
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
+(use-package undo-tree
+  :ensure t
+  :bind (("C-z" . undo-tree-undo)
+	 ("C-S-z" . undo-tree-redo))
+  :config (global-undo-tree-mode))
 
 ;;Indent
 
-(require 'indent-guide)
-(indent-guide-global-mode)
+(use-package indent-guide
+  :ensure t
+  :config (indent-guide-global-mode))
 
-;;Dumb Jump
-(require 'dumb-jump)
-(global-set-key (kbd "M-s g") 'dumb-jump-go)
-(global-set-key (kbd "M-s b") 'dumb-jump-back)
+;;Neotree
+(use-package neotree
+  :ensure t
+  :bind (("M-t" . neotree-toggle))
+  :config (setq neo-smart-open t
+           neo-show-hidden-files t
+           neo-banner-message nil
+           neo-create-file-auto-open t
+           neo-dont-be-alone t
+           neo-vc-integration '(face char)
+           neo-window-fixed-size nil)
+           (set-face-foreground 'neo-dir-link-face "SlateGray2")
+           (set-face-foreground 'neo-file-link-face "grey88"))
 
 ;;Finding/Searching
 
-(require 'flx)
+(use-package dumb-jump
+  :ensure t
+  :bind (("M-s g" . dumb-jump-go)
+	       ("M-s b" . dumb-jump-back)))
 
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-initial-inputs-alist nil)
+(use-package flx
+  :ensure t)
 
-(setq ivy-re-builders-alist
-      '((read-file-name-internal . ivy--regex-fuzzy)
-	      (counsel-git . ivy--regex-fuzzy)
-        (t . ivy--regex-plus)))
+(use-package visual-regexp
+  :ensure t
+  :bind (("s-r" . vr/replace)))
 
-(setq ivy-display-style 'fancy)
+(use-package smex
+  :ensure t)
 
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "s-f") 'swiper)
-(global-set-key (kbd "s-r") 'replace-string)
-
-(if window-system
-  (progn
-    (global-set-key (kbd "s-F") 'ag)
-    (global-set-key (kbd "s-p") 'counsel-git))
-  (progn
-    (global-set-key (kbd "C-u") 'ag)
-    (global-set-key (kbd "M-p") 'counsel-git)))
-
-(setq ag-highlight-search t)
-(setq ag-reuse-window t)
-(setq ag-reuse-buffers t)
+(use-package swiper
+  :ensure t
+  :bind (("\C-s" . swiper)
+	 ("s-f" . swiper))
+  :config (ivy-mode 1)
+          (setq ivy-use-virtual-buffers t)
+	  (setq ivy-initial-inputs-alist nil)
+	  (setq ivy-re-builders-alist
+		'((counsel-git . ivy--regex-fuzzy)
+		  (t . ivy--regex-plus)))
+	  (setq ivy-display-style 'fancy))
+(use-package counsel
+  :ensure t
+  :bind (("C-x C-f" . counsel-find-file)
+	 ("M-x" . counsel-M-x)
+	 ("M-y" . counsel-yank-pop)
+	 ("s-p" . counsel-git)))
 
 (defun set-exec-path-from-shell-PATH ()
   (interactive)
@@ -128,6 +100,12 @@
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 
-(set-exec-path-from-shell-PATH)
+(use-package ag
+  :ensure t
+  :bind (("s-F" . ag))
+  :config (set-exec-path-from-shell-PATH)
+          (setq ag-highlight-search t)
+          (setq ag-reuse-window t)
+	  (setq ag-reuse-buffers t))
 
 (provide 'general)
