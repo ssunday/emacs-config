@@ -4,6 +4,7 @@ My Emacs Config.
 Features:
 
 * Designed primarily for GUI
+* Server/emacsclient is what this is intended for
 * Tab bar
 * Company autocompletion
 * Counsel for finding stuff. Also AG.
@@ -11,6 +12,6 @@ Features:
 
 Requirements:
 
-* TERN
 * AG
 * Emacs
+* Tern

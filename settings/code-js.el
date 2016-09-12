@@ -1,10 +1,11 @@
 ;;JS development
 
+(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
+
 (use-package tern
   :ensure t
-  :config (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
-          (autoload 'tern-mode "tern.el" nil t)
-	  (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+  :config (add-hook 'js-mode-hook (lambda () (tern-mode t)))
 	  (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 	  (setq js-indent-level 2))
 

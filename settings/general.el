@@ -4,6 +4,12 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+(defun switch-to-previous-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+(global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
+
 ;;Random Settings
 (setq inhibit-startup-message t)
 (setq mac-command-key-is-meta nil)
