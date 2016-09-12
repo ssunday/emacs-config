@@ -39,10 +39,8 @@
 (use-package stripe-buffer
   :ensure t
   :config (add-hook 'dired-mode-hook 'stripe-listify-buffer)
-          (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer))
-
-(face-remap-add-relative 'stripe-highlight '((:background "#4A4A4A")))
-(face-remap-add-relative 'stripe-hl-line '((:foreground "black" :background "#AEAEAE")))
+          (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer)
+	  (face-remap-add-relative 'stripe-highlight '((:background "#4A4A4A"))))
 
 (eval-after-load 'diff-mode
   '(progn

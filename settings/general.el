@@ -22,7 +22,6 @@
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 
-
 ;;Auto Completion
 
 (use-package company
@@ -64,7 +63,7 @@
 (use-package dumb-jump
   :ensure t
   :bind (("M-s g" . dumb-jump-go)
-	       ("M-s b" . dumb-jump-back)))
+	 ("M-s b" . dumb-jump-back)))
 
 (use-package flx
   :ensure t)
@@ -84,9 +83,11 @@
           (setq ivy-use-virtual-buffers t)
 	  (setq ivy-initial-inputs-alist nil)
 	  (setq ivy-re-builders-alist
-		'((counsel-git . ivy--regex-fuzzy)
+		'((counsel-find-file . ivy--regex-fuzzy)
+		  (counsel-git . ivy--regex-fuzzy)
 		  (t . ivy--regex-plus)))
 	  (setq ivy-display-style 'fancy))
+
 (use-package counsel
   :ensure t
   :bind (("C-x C-f" . counsel-find-file)

@@ -37,20 +37,19 @@
 	   :height 1.0
 	   :background "gray20"
 	   :height 0.6)
-	  (set-face-attribute 'tabbar-separator nil :height 1.0)
-	  (setq tabbar-buffer-groups-function (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-							  ((eq major-mode 'dired-mode) "emacs")
-							  (t "user"))))
-	  (defun tabbar-buffer-tab-label (tab)
-	    (let ((label  (if tabbar--buffer-show-groups
-			      (format "[%s]  " (tabbar-tab-tabset tab))
-			    (format "%s  " (tabbar-tab-value tab)))))
-	      (if tabbar-auto-scroll-flag
-		  label
-		(tabbar-shorten
-		 label (max 1 (/ (window-width)
-				 (length (tabbar-view
-					  (tabbar-current-tabset)))))))))
-	  (tabbar-mode t))
+	  (set-face-attribute 'tabbar-separator nil :height 1.0))
+
+(defun tabbar-buffer-tab-label (tab)
+  (let ((label  (if tabbar--buffer-show-groups
+		    (format "[%s]  " (tabbar-tab-tabset tab))
+		  (format "%s  " (tabbar-tab-value tab)))))
+    (if tabbar-auto-scroll-flag
+	label
+      (tabbar-shorten
+       label (max 1 (/ (window-width)
+		       (length (tabbar-view
+				(tabbar-current-tabset)))))))))
+
+(tabbar-mode t)
 
 (provide 'tab)
