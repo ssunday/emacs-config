@@ -1,9 +1,9 @@
 ;; Mode line setup
+
 (setq-default
  mode-line-format
- '((:propertize "%4l:" face mode-line-position-face)
+ '((:propertize "%4l:" 'face mode-line-position-face)
    (:eval (propertize "%3c" 'face 'mode-line-position-face))
-   mode-line-client
    "  "
    (:eval
     (cond (buffer-read-only
@@ -47,13 +47,15 @@
 (make-face 'mode-line-mode-face)
 
 (set-face-attribute 'mode-line nil
-    :foreground "gray60" :background "gray20"
+    :foreground "gray60" :background "#3a3a3a"
     :inverse-video nil
-    :box '(:line-width 6 :color "gray20" :style nil))
+    :height 1.0
+    :box '(:line-width 6 :color "#3a3a3a" :style nil))
 (set-face-attribute 'mode-line-inactive nil
-    :foreground "gray80" :background "gray40"
+    :foreground "gray80" :background "#545454"
     :inverse-video nil
-    :box '(:line-width 6 :color "gray40" :style nil))
+    :height 1.0
+    :box '(:line-width 6 :color "#545454" :style nil))
 (set-face-attribute 'mode-line-read-only-face nil
     :inherit 'mode-line-face
     :foreground "#4271ae"

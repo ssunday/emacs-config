@@ -38,17 +38,9 @@
    :height 1.0
    :background "gray20"
    :height 0.6)
-
   (set-face-attribute 'tabbar-separator nil :height 1.0))
 
 (require 'tabbar)
-
-(defun my-tabbar-buffer-groups ()
-  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
-	      ((eq major-mode 'dired-mode) "emacs")
-	      (t "user"))))
-
-(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
 
 (defun tabbar-buffer-tab-label (tab)
   (let ((label  (if tabbar--buffer-show-groups

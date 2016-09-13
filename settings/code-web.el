@@ -12,12 +12,6 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package coffee-mode
-  :ensure t)
-
-(use-package markdown-mode
-  :ensure t)
-
 (use-package jekyll-modes
   :ensure t)
 

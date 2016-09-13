@@ -1,27 +1,52 @@
-;; (defun set-frame-size-according-to-resolution ()
-;;   (interactive)
-;;   (progn
-;;     (if (> (x-display-pixel-width) 1280)
-;; 	(add-to-list 'default-frame-alist (cons 'width 150))
-;;       (add-to-list 'default-frame-alist (cons 'width 90)))
-;;     (add-to-list 'default-frame-alist
-;; 		 (cons 'height (/ (- (x-display-pixel-height) 80)
-;; 				  (frame-char-height))))))
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (progn
+    (when window-system
+      (if (> (x-display-pixel-width) 1280)
+	  (add-to-list 'default-frame-alist (cons 'width 160))
+	(add-to-list 'default-frame-alist (cons 'width 90)))
+      (add-to-list 'default-frame-alist
+		   (cons 'height (/ (- (x-display-pixel-height) 80)
+				    (frame-char-height)))))))
 
-(setq initial-frame-alist '((left . 50) (top . 50)))
+(when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
 
-;; (set-frame-size-according-to-resolution)
+(setq initial-frame-alist '((left . 150) (top . 50)))
+
+(set-frame-size-according-to-resolution)
 
 (setq frame-title-format '(buffer-file-name "%f" ("%b"))
       inhibit-splash-screen t
+      inhibit-startup-message t
       initial-scratch-message nil
       fringe-indicator-alist (delq (assq 'continuation fringe-indicator-alist)
 				   fringe-indicator-alist))
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(transient-mark-mode t)
-(setq x-select-enable-clipboard t)
-(menu-bar-mode -1)
+
+(use-package atom-one-dark-theme
+  :if window-system
+  :ensure t
+  :config (load-theme 'atom-one-dark t))
+
+(use-package material-theme
+  :if (not window-system)
+  :ensure t
+  :config (load-theme 'material t))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+        (lambda (frame)
+            (select-frame frame)
+            (load-theme 'atom-one-dark t)
+	    (set-frame-size-according-to-resolution))))
+
+(use-package stripe-buffer
+  :ensure t
+  :commands (stripe-buffer-mode stripe-listify-buffer)
+  :config
+  (add-hook 'dired-mode-hook 'stripe-listify-buffer)
+  (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer))
 
 (global-linum-mode t)
 (global-hl-line-mode 1)
@@ -35,25 +60,10 @@
   :ensure t
   :config (hlinum-activate))
 
-(use-package stripe-buffer
-  :ensure t
-  :config (add-hook 'dired-mode-hook 'stripe-listify-buffer)
-  (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer)
-  (face-remap-add-relative 'stripe-highlight '((:background "#4A4A4A"))))
-
 (eval-after-load 'diff-mode
   '(progn
      (set-face-foreground 'diff-added "green4")
      (set-face-foreground 'diff-removed "red3")))
-
-(use-package atom-one-dark-theme
-  :ensure t
-  :config (load-theme 'atom-one-dark t))
-
-;; (use-package material-theme
-;;   :if (not window-system)
-;;   :ensure t
-;;   :config (load-theme 'material t))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -61,15 +71,14 @@
 
 (use-package rainbow-mode
   :ensure t
-  :config (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
-	    (lambda () (rainbow-mode 1)))
-
+  :config
+  (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
+    (lambda () (rainbow-mode 1)))
   (my-global-rainbow-mode 1))
 
 (use-package beacon
   :ensure t
+  :commands (beacon-mode)
   :config (beacon-mode 1))
-
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (provide 'visual)

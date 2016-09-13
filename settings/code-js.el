@@ -1,4 +1,4 @@
-;;JS development
+;;JS development. Tern basically for syntax highlighting and code-completion.
 
 (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)

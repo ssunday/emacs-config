@@ -4,26 +4,22 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-
-(global-set-key (kbd "C-c b") 'switch-to-previous-buffer)
-
 ;;Random Settings
-(setq inhibit-startup-message t)
-(setq mac-command-key-is-meta nil)
+
 (delete-selection-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
   (remq 'process-kill-buffer-query-function
 	kill-buffer-query-functions))
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(setq backup-inhibited t)
-(setq auto-save-default nil)
-(setq create-lockfiles nil)
+
+(setq backup-inhibited t
+      auto-save-default nil
+      create-lockfiles nil
+      x-select-enable-clipboard t
+      confirm-nonexistent-file-or-buffer nil
+      mac-command-key-is-meta nil)
+
 (global-auto-revert-mode)
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
@@ -55,12 +51,12 @@
   :ensure t
   :bind (("M-t" . neotree-toggle))
   :config (setq neo-smart-open t
-           neo-show-hidden-files t
-           neo-banner-message nil
-           neo-create-file-auto-open t
-           neo-dont-be-alone t
-           neo-vc-integration '(face char)
-           neo-window-fixed-size nil)
+		neo-show-hidden-files t
+		neo-banner-message nil
+		neo-create-file-auto-open t
+		neo-dont-be-alone t
+		neo-vc-integration '(face char)
+		neo-window-fixed-size nil)
            (set-face-foreground 'neo-dir-link-face "SlateGray2")
            (set-face-foreground 'neo-file-link-face "grey88"))
 
@@ -86,13 +82,13 @@
   :bind (("\C-s" . swiper)
 	 ("s-f" . swiper))
   :config (ivy-mode 1)
-          (setq ivy-use-virtual-buffers t)
-	  (setq ivy-initial-inputs-alist nil)
-	  (setq ivy-re-builders-alist
+          (setq ivy-use-virtual-buffers t
+		ivy-initial-inputs-alist nil
+		ivy-re-builders-alist
 		'((counsel-find-file . ivy--regex-fuzzy)
 		  (counsel-git . ivy--regex-fuzzy)
-		  (t . ivy--regex-plus)))
-	  (setq ivy-display-style 'fancy))
+		  (t . ivy--regex-plus))
+		ivy-display-style 'fancy))
 
 (use-package counsel
   :ensure t
@@ -111,8 +107,8 @@
   :ensure t
   :bind (("s-F" . ag))
   :config (set-exec-path-from-shell-PATH)
-          (setq ag-highlight-search t)
-          (setq ag-reuse-window t)
-	  (setq ag-reuse-buffers t))
+          (setq ag-highlight-search t
+		ag-reuse-window t
+		ag-reuse-buffers t))
 
 (provide 'general)

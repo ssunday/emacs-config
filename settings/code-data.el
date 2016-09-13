@@ -1,9 +1,6 @@
-;;Data related mods. JSON. ElasticSearch. ETC.
+;;Data related mods. JSON. ETC.
 
 (use-package json-mode
-  :ensure t)
-
-(use-package es-mode
   :ensure t)
 
 (provide 'code-data)
