@@ -21,6 +21,8 @@
       inhibit-splash-screen t
       inhibit-startup-message t
       initial-scratch-message nil
+      global-font-lock-mode 1
+      frame-resize-pixelwise t
       fringe-indicator-alist (delq (assq 'continuation fringe-indicator-alist)
 				   fringe-indicator-alist))
 
@@ -46,7 +48,8 @@
   :commands (stripe-buffer-mode stripe-listify-buffer)
   :config
   (add-hook 'dired-mode-hook 'stripe-listify-buffer)
-  (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer))
+  (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer)
+  (add-hook 'package-menu-mode-hook 'stripe-listify-buffer))
 
 (global-linum-mode t)
 (global-hl-line-mode 1)

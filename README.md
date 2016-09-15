@@ -9,9 +9,9 @@ Features:
 * Company autocompletion
 * Counsel for finding stuff. Also AG.
 * Dark theme
+* Light weight/simple
 
 Requirements:
 
 * AG
 * Emacs
-* Tern

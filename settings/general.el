@@ -1,5 +1,10 @@
 ;;Buffers
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(use-package ibuffer
+    :commands (ibuffer)
+    :bind ("C-x C-b" . ibuffer)
+    :config
+    (setq ibuffer-default-sorting-mode 'major-mode))
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))

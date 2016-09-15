@@ -12,7 +12,7 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package jekyll-modes
+(use-package mustache-mode
   :ensure t)
 
 (use-package web-mode
