@@ -3,17 +3,17 @@
   (progn
     (when window-system
       (if (> (x-display-pixel-width) 1280)
-	  (add-to-list 'default-frame-alist (cons 'width 160))
+	  (add-to-list 'default-frame-alist (cons 'width 180))
 	(add-to-list 'default-frame-alist (cons 'width 90)))
       (add-to-list 'default-frame-alist
 		   (cons 'height (/ (- (x-display-pixel-height) 80)
 				    (frame-char-height)))))))
 
+(setq default-frame-alist '((left . 150) (top . 40)))
+
 (when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode 0))
-
-(setq initial-frame-alist '((left . 150) (top . 50)))
 
 (set-frame-size-according-to-resolution)
 
@@ -36,16 +36,8 @@
   :ensure t
   :config (load-theme 'material t))
 
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-        (lambda (frame)
-            (select-frame frame)
-            (load-theme 'atom-one-dark t)
-	    (set-frame-size-according-to-resolution))))
-
 (use-package stripe-buffer
   :ensure t
-  :commands (stripe-buffer-mode stripe-listify-buffer)
   :config
   (add-hook 'dired-mode-hook 'stripe-listify-buffer)
   (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer)
@@ -81,7 +73,16 @@
 
 (use-package beacon
   :ensure t
-  :commands (beacon-mode)
   :config (beacon-mode 1))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+        (lambda (frame)
+            (select-frame frame)
+            (load-theme 'atom-one-dark t)
+	    (add-hook 'dired-mode-hook 'stripe-listify-buffer)
+	    (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer)
+	    (add-hook 'package-menu-mode-hook 'stripe-listify-buffer)
+	    (set-frame-size-according-to-resolution))))
 
 (provide 'visual)

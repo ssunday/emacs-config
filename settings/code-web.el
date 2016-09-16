@@ -19,7 +19,8 @@
   :ensure t)
 
 (use-package company-web
-  :ensure t)
+  :ensure t
+  :after company)
 
 (setq css-indent-offset 2)
 

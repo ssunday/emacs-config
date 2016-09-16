@@ -43,15 +43,15 @@
 (require 'tabbar)
 
 (defun tabbar-buffer-tab-label (tab)
-  (let ((label  (if tabbar--buffer-show-groups
-		    (format "[%s]  " (tabbar-tab-tabset tab))
-		  (format "%s  " (tabbar-tab-value tab)))))
-    (if tabbar-auto-scroll-flag
-	label
-      (tabbar-shorten
-       label (max 1 (/ (window-width)
-		       (length (tabbar-view
-				(tabbar-current-tabset)))))))))
+    (let ((label  (if tabbar--buffer-show-groups
+                      (format " [%s] " (tabbar-tab-tabset tab))
+                    (format " %s " (tabbar-tab-value tab)))))
+      (if tabbar-auto-scroll-flag
+          label
+        (tabbar-shorten
+         label (max 1 (/ (window-width)
+                         (length (tabbar-view
+                                  (tabbar-current-tabset)))))))))
 
 (tabbar-mode t)
 

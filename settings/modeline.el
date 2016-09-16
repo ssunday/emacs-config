@@ -4,24 +4,24 @@
  mode-line-format
  '((:propertize "%4l:" 'face mode-line-position-face)
    (:eval (propertize "%3c" 'face 'mode-line-position-face))
-   "  "
+   "     "
    (:eval
     (cond (buffer-read-only
            (propertize " RO " 'face 'mode-line-read-only-face))
           ((buffer-modified-p)
            (propertize " ** " 'face 'mode-line-modified-face))
-          (t "      ")))
-   "    "
+          (t "     ")))
+   "     "
    (:propertize (:eval (shorten-directory default-directory 30))
                 face mode-line-folder-face)
    (:propertize "%b"
                 face mode-line-filename-face)
-   " %n "
+   "     "
    (vc-mode vc-mode)
-   "  %["
+   "     ["
    (:propertize mode-name
-                face mode-line-mode-face)
-   "%] "
+               face mode-line-mode-face)
+   "]"
    ))
 
 ;; Helper function
@@ -47,15 +47,17 @@
 (make-face 'mode-line-mode-face)
 
 (set-face-attribute 'mode-line nil
-    :foreground "gray60" :background "#3a3a3a"
+    :foreground "gray60"
+    :background "#3a3a3a"
     :inverse-video nil
     :height 1.0
-    :box '(:line-width 6 :color "#3a3a3a" :style nil))
+    :box '(:line-width 6 :color "#3a3a3a"))
 (set-face-attribute 'mode-line-inactive nil
-    :foreground "gray80" :background "#545454"
+    :foreground "gray80"
+    :background "#545454"
     :inverse-video nil
     :height 1.0
-    :box '(:line-width 6 :color "#545454" :style nil))
+    :box '(:line-width 6 :color "#545454"))
 (set-face-attribute 'mode-line-read-only-face nil
     :inherit 'mode-line-face
     :foreground "#4271ae"
