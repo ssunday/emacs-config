@@ -12,6 +12,7 @@
       create-lockfiles nil
       x-select-enable-clipboard t
       confirm-nonexistent-file-or-buffer nil
+      mouse-wheel-progressive-speed nil
       mac-command-key-is-meta nil)
 
 (global-auto-revert-mode)
@@ -110,8 +111,7 @@
   :bind (("C-x C-f" . counsel-find-file)
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
-	 ("s-p" . counsel-git)
-	 ("s-F" . counsel-git-grep)))
+	 ("s-p" . counsel-git)))
 
 (defun set-exec-path-from-shell-PATH ()
   (interactive)
@@ -121,6 +121,8 @@
 
 (use-package ag
   :ensure t
+  :bind
+  (("s-F" . ag))
   :config
   (set-exec-path-from-shell-PATH)
   (setq ag-highlight-search t

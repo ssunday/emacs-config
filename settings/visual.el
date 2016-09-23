@@ -75,6 +75,11 @@
   :ensure t
   :config (beacon-mode 1))
 
+(use-package smooth-scrolling
+  :ensure t
+  :config
+  (smooth-scrolling-mode 1))
+
 (if (daemonp)
     (add-hook 'after-make-frame-functions
         (lambda (frame)
