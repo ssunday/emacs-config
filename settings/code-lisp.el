@@ -13,7 +13,15 @@
   :ensure t)
 
 (use-package slime
-  :ensure t)
+  :ensure t
+  :config
+  (setq inferior-lisp-program "/Applications/ccl/dx86cl64")
+  (setq slime-contribs '(slime-fancy)))
+
+(use-package slime-company
+  :ensure t
+  :config
+  (slime-setup '(slime-fancy slime-company)))
 
 (defface font-lock-func-face
   '((nil (:foreground "#ca3bd1"))
