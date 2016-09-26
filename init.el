@@ -16,6 +16,7 @@
 (require 'code-lisp)
 (require 'code-csharp)
 (require 'code-data)
+(require 'code-haskell)
 (require 'code-js)
 (require 'code-web)
 (require 'code-misc)
