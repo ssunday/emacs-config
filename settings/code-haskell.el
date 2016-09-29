@@ -6,7 +6,8 @@
 (use-package company-ghc
   :ensure t
   :config
-  (add-to-list 'company-backends 'company-ghc)
+  (add-to-list 'company-backends
+	       '(company-ghc :with company-dabbrev-code))
   (custom-set-variables '(company-ghc-show-info t)))
 
 (provide 'code-haskell)
