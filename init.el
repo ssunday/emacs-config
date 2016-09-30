@@ -10,6 +10,8 @@
 ;;Core Setup
 
 (require 'general)
+(require 'completion-ivy)
+(require 'keys-hydra)
 
 ;;Programming Languages
 
