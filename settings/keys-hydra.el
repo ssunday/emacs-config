@@ -117,6 +117,30 @@
      ("V" scroll-down-command "scroll down")
      ("l" recenter-top-bottom "recenter")))
 
+  (defun kill-all-buffers ()
+    (interactive)
+    (mapc 'kill-buffer (buffer-list)))
+
+  (defun kill-other-buffers ()
+    (interactive)
+    (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
+
+  (global-set-key
+   (kbd "C-x k")
+   (defhydra hydra-kill-buffer
+     (:color teal)
+         "
+                   ^KILL^
+----------------------------------------------
+| _k_: current buffer  | _a_: all buffers    |
+| _o_: other buffers   | _q_: quit           |
+----------------------------------------------
+"
+     ("k" kill-this-buffer "kill current buffer")
+     ("a" kill-all-buffers "kill all buffers")
+     ("o" kill-other-buffers "kill other buffers")
+     ("q" nil "quit" :color blue)))
+
   )
 
 (provide 'keys-hydra)
