@@ -15,7 +15,7 @@
 (use-package slime
   :ensure t
   :config
-  (setq inferior-lisp-program "/Applications/ccl/dx86cl64")
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
   (setq slime-contribs '(slime-fancy)))
 
 (use-package slime-company
