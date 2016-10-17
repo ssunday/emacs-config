@@ -128,7 +128,7 @@
   (global-set-key
    (kbd "C-x k")
    (defhydra hydra-kill-buffer
-     (:color teal)
+     (:color red)
          "
                    ^KILL^
 ----------------------------------------------
@@ -139,7 +139,7 @@
      ("k" kill-this-buffer "kill current buffer")
      ("a" kill-all-buffers "kill all buffers")
      ("o" kill-other-buffers "kill other buffers")
-     ("q" nil "quit" :color blue)))
+     ("q" nil "quit")))
 
   )
 
