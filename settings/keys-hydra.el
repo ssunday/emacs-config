@@ -93,7 +93,6 @@
     ("b" hydra-ibuffer-main/body "back" :color blue))
 
   (define-key ibuffer-mode-map "." 'hydra-ibuffer-main/body)
-  ;; (add-hook 'ibuffer-hook #'hydra-ibuffer-main/body)
 
   (defhydra hydra-goto-line (goto-map "")
     "goto-line"
@@ -128,18 +127,13 @@
   (global-set-key
    (kbd "C-x k")
    (defhydra hydra-kill-buffer
-     (:color red)
-         "
-                   ^KILL^
-----------------------------------------------
-| _k_: current buffer  | _a_: all buffers    |
-| _o_: other buffers   | _q_: quit           |
-----------------------------------------------
-"
+     (:color pink)
+     "kill-buffers"
      ("k" kill-this-buffer "kill current buffer")
+     ("c" kill-buffer "kill buffer cycle")
      ("a" kill-all-buffers "kill all buffers")
      ("o" kill-other-buffers "kill other buffers")
-     ("q" nil "quit")))
+     ("q" nil "quit" :color blue)))
 
   )
 

@@ -8,6 +8,7 @@
 
 (use-package ivy
   :ensure t
+  :bind (("C-z" . ivy-immediate-done))
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t

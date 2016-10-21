@@ -10,6 +10,13 @@ Features:
 * Counsel for finding stuff. Also AG.
 * Dark theme
 * Light weight/simple
+* Hydras!
+
+Programming languages with some more setup than vanilla:
+* Common LISP
+* Clojure
+* Javascript
+* Haskell
 
 Requirements:
 
