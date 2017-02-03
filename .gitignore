@@ -2,3 +2,5 @@ recentf
 smex-items
 elpa/
 auto-save-list/
+eshell/
+.emacs-custom.el
