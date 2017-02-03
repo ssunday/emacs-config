@@ -124,15 +124,22 @@
     (interactive)
     (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
 
+  (defun kill-buffer-to-the-right ()
+    (interactive)
+    (kill-buffer (other-buffer)))
+
   (global-set-key
    (kbd "C-x k")
    (defhydra hydra-kill-buffer
-     (:color pink)
+     (:color pink :hint nil
+	     :columns 2
+	     :body-pre (next-line))
      "kill-buffers"
      ("k" kill-this-buffer "kill current buffer")
      ("c" kill-buffer "kill buffer cycle")
      ("a" kill-all-buffers "kill all buffers")
      ("o" kill-other-buffers "kill other buffers")
+     ("r" kill-buffer-to-the-right "kill buffer to the right")
      ("q" nil "quit" :color blue)))
 
   )
