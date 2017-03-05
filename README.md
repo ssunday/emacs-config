@@ -15,8 +15,9 @@ Features:
 Programming languages with some more setup than vanilla:
 * Common LISP
 * Clojure
-* Javascript
+* JavaScript
 * Haskell
+* PHP
 
 Requirements:
 

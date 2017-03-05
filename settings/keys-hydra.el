@@ -131,15 +131,11 @@
   (global-set-key
    (kbd "C-x k")
    (defhydra hydra-kill-buffer
-     (:color pink :hint nil
-	     :columns 2
-	     :body-pre (next-line))
-     "kill-buffers"
+     (:color pink)
      ("k" kill-this-buffer "kill current buffer")
      ("c" kill-buffer "kill buffer cycle")
      ("a" kill-all-buffers "kill all buffers")
      ("o" kill-other-buffers "kill other buffers")
-     ("r" kill-buffer-to-the-right "kill buffer to the right")
      ("q" nil "quit" :color blue)))
 
   )

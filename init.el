@@ -16,12 +16,13 @@
 ;;Programming Languages
 
 (require 'code-lisp)
-(require 'code-csharp)
 (require 'code-data)
 (require 'code-haskell)
 (require 'code-js)
+(require 'code-php)
 (require 'code-web)
 (require 'code-misc)
+(require 'devops)
 
 ;;Visual
 
