@@ -3,13 +3,10 @@
 (use-package php-mode
   :ensure t)
 
-(use-package company-php
-  :ensure t
-  :config
-  (add-hook 'php-mode-hook
-	    '(lambda ()
-	       (require 'company-php)
-	       (company-mode t)
-	       (add-to-list 'company-backends 'company-ac-php-backend ))))
+(defun php-mode-init ()
+  (setq indent-tabs-mode nil)
+  (setq c-basic-offset 2))
+
+(add-hook 'php-mode-hook 'php-mode-init)
 
 (provide 'code-php)
