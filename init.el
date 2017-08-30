@@ -21,6 +21,7 @@
 (require 'code-haskell)
 (require 'code-js)
 (require 'code-php)
+(require 'code-ruby)
 (require 'code-web)
 (require 'code-misc)
 (require 'devops)
