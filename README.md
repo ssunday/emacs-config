@@ -1,6 +1,4 @@
-# emacs-config
-
-My (Hack) Emacs Config.
+# My (Hack) Emacs Config
 
 ## Requirements
 
@@ -29,8 +27,11 @@ Programming languages with some more setup than vanilla:
 
 ## Keybindings
 
-
 I have some custom keybindings setup.
+
+- `s` = `Command`
+- `C` = `Control`
+- `M` = `Alt/Escape`
 
 The cheat sheet:
 
@@ -42,3 +43,5 @@ The cheat sheet:
 - `s-F` - AG.
 - `s-r` - Find and replace all.
 - `M-%` - Query replace one by one.
+- `M-t` - Neotree toggle
+- `s-g` - Magit status
