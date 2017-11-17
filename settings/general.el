@@ -57,8 +57,6 @@
 
 (use-package undo-tree
   :ensure t
-  :bind (("C-z" . undo-tree-undo)
-	 ("C-S-z" . undo-tree-redo))
   :config (global-undo-tree-mode))
 
 ;;Indent
@@ -68,6 +66,7 @@
   :config (indent-guide-global-mode))
 
 ;;Neotree
+
 (use-package neotree
   :ensure t
   :bind (("M-t" . neotree-toggle))
@@ -109,5 +108,13 @@
   (setq ag-highlight-search t
 	ag-reuse-window t
 	ag-reuse-buffers t))
+
+;; VCS
+
+(use-package magit
+  :ensure t
+  :bind
+  (("s-g" . magit-status))
+)
 
 (provide 'general)
