@@ -44,4 +44,4 @@ The cheat sheet:
 - `s-r` - Find and replace all.
 - `M-%` - Query replace one by one.
 - `M-t` - Neotree toggle
-- `s-g` - Magit status
+- `M-G` - Magit status

@@ -112,7 +112,6 @@
      ("b" backward-char "backward char")
      ("a" beginning-of-line "line start")
      ("e" move-end-of-line "line end")
-     ("v" scroll-up-command "scroll up")
      ("V" scroll-down-command "scroll down")
      ("l" recenter-top-bottom "recenter")))
 
@@ -136,7 +135,8 @@
      ("c" kill-buffer "kill buffer cycle")
      ("a" kill-all-buffers "kill all buffers")
      ("o" kill-other-buffers "kill other buffers")
-     ("q" nil "quit" :color blue)))
+     ("q" nil "quit" :color blue))
+   )
 
   )
 

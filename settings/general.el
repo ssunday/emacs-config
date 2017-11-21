@@ -114,7 +114,7 @@
 (use-package magit
   :ensure t
   :bind
-  (("s-g" . magit-status))
+  (("M-G" . magit-status))
 )
 
 (provide 'general)
