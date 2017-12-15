@@ -36,10 +36,10 @@
 
 ;;Buffers
 
-(use-package ibuffer
-  :bind ("C-x C-b" . ibuffer)
-  :config
-  (setq ibuffer-default-sorting-mode 'major-mode))
+(use-package ibuffer)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(setq ibuffer-default-sorting-mode 'major-mode)
 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
@@ -47,11 +47,11 @@
 ;;Auto Completion
 
 (use-package company
-  :ensure t
-  :config
-  (add-hook 'after-init-hook 'global-company-mode)
+  :ensure t)
+
+(add-hook 'after-init-hook 'global-company-mode)
   (setq company-tooltip-limit 10
-	company-idle-delay .2))
+	company-idle-delay .2)
 
 ;;Undo-Redo key-mappings
 
@@ -89,9 +89,9 @@
 	 ("M-s b" . dumb-jump-back)))
 
 (use-package visual-regexp
-  :ensure t
-  :bind (("s-r" . vr/replace)
-	 ("M-%" . vr/query-replace)))
+  :ensure t)
+
+(global-set-key (kbd "s-r") 'vr/replace)
 
 (defun set-exec-path-from-shell-PATH ()
   (interactive)
@@ -100,14 +100,14 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 
 (use-package ag
-  :ensure t
-  :bind
-  (("s-F" . ag))
-  :config
-  (set-exec-path-from-shell-PATH)
-  (setq ag-highlight-search t
-	ag-reuse-window t
-	ag-reuse-buffers t))
+  :ensure t)
+
+(global-set-key (kbd "s-F") 'ag)
+
+(set-exec-path-from-shell-PATH)
+(setq ag-highlight-search t
+      ag-reuse-window t
+      ag-reuse-buffers t)
 
 ;; VCS
 
