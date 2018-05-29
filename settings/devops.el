@@ -9,4 +9,13 @@
   :ensure t
   :config (setq apache-indent-level 2))
 
+(use-package dockerfile-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+  )
+
+(use-package docker-compose-mode
+  :ensure t)
+
 (provide 'devops)

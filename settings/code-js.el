@@ -17,7 +17,4 @@
   :config
   (add-hook 'js2-mode-hook 'ac-js2-mode))
 
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . javascript-mode))
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . javascript-mode))
-
 (provide 'code-js)
