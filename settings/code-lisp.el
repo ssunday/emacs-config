@@ -39,4 +39,6 @@
  '(("(\\s-*\\(\\_<\\(?:\\sw\\|\\s_\\)+\\)\\_>"
     1 'font-lock-func-face)))
 
+(setq lisp-indent-offset 2)
+
 (provide 'code-lisp)
