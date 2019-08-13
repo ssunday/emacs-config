@@ -102,6 +102,9 @@
 (use-package ag
   :ensure t)
 
+(use-package dash
+  :ensure t)
+
 (global-set-key (kbd "s-F") 'ag)
 
 (set-exec-path-from-shell-PATH)
