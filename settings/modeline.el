@@ -25,6 +25,7 @@
    ))
 
 ;; Helper function
+
 (defun shorten-directory (dir max-length)
   "Show up to `max-length' characters of a directory name `dir'."
   (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
@@ -39,6 +40,7 @@
     output))
 
 ;; Extra mode line faces
+
 (make-face 'mode-line-read-only-face)
 (make-face 'mode-line-modified-face)
 (make-face 'mode-line-folder-face)

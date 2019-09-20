@@ -22,7 +22,6 @@
 (global-auto-revert-mode)
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
-
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
@@ -53,12 +52,6 @@
   (setq company-tooltip-limit 10
 	company-idle-delay .2)
 
-;;Undo-Redo key-mappings
-
-(use-package undo-tree
-  :ensure t
-  :config (global-undo-tree-mode))
-
 ;;Indent
 
 (use-package indent-guide
@@ -82,11 +75,6 @@
   (set-face-foreground 'neo-file-link-face "grey88"))
 
 ;;Finding/Searching
-
-(use-package dumb-jump
-  :ensure t
-  :bind (("M-s g" . dumb-jump-go)
-	 ("M-s b" . dumb-jump-back)))
 
 (use-package visual-regexp
   :ensure t)
@@ -115,9 +103,6 @@
 ;; VCS
 
 (use-package magit
-  :ensure t
-  :bind
-  (("M-G" . magit-status))
-)
+  :ensure t)
 
 (provide 'general)
