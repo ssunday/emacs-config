@@ -4,3 +4,5 @@ elpa/
 auto-save-list/
 eshell/
 .emacs-custom.el
+transient
+abbrev_defs

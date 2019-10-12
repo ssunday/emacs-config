@@ -24,6 +24,7 @@ Programming languages with some more setup than vanilla:
 - JavaScript
 - Haskell
 - PHP
+- Elixir
 
 ## Keybindings
 
