@@ -7,13 +7,13 @@
 
 (require 'packages)
 
-;;Core Setup
+;; Core Setup
 
 (require 'general)
 (require 'completion-ivy)
 (require 'keys-hydra)
 
-;;Programming Languages
+;; Programming Languages
 
 (require 'code-lisp)
 (require 'code-data)
@@ -24,7 +24,7 @@
 (require 'code-web)
 (require 'devops)
 
-;;Visual
+;; Visual
 
 (require 'tab)
 (require 'visual)

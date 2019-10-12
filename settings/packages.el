@@ -1,7 +1,18 @@
 (require 'package)
 
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(setq package-archives
+  '(
+     ("melpa-stable" . "https://stable.melpa.org/packages/")
+     ("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")
+     )
+  package-archive-priorities
+  '(
+     ("melpa-stable" . 4)
+     ("gnu" . 2)
+     ("melpa" . 0)
+     )
+  )
 
 (package-initialize)
 
