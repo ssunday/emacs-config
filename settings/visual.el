@@ -64,13 +64,6 @@
   :ensure t
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(use-package rainbow-mode
-  :ensure t
-  :config
-  (define-globalized-minor-mode my-global-rainbow-mode rainbow-mode
-    (lambda () (rainbow-mode 1)))
-  (my-global-rainbow-mode 1))
-
 (use-package beacon
   :ensure t
   :config (beacon-mode 1))
@@ -81,13 +74,13 @@
   (smooth-scrolling-mode 1))
 
 (if (daemonp)
-    (add-hook 'after-make-frame-functions
-        (lambda (frame)
-            (select-frame frame)
-            (load-theme 'atom-one-dark t)
-	    (add-hook 'dired-mode-hook 'stripe-listify-buffer)
-	    (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer)
-	    (add-hook 'package-menu-mode-hook 'stripe-listify-buffer)
-	    (set-frame-size-according-to-resolution))))
+  (add-hook 'after-make-frame-functions
+    (lambda (frame)
+      (select-frame frame)
+      (load-theme 'atom-one-dark t)
+      (add-hook 'dired-mode-hook 'stripe-listify-buffer)
+      (add-hook 'ibuffer-mode-hook 'stripe-listify-buffer)
+      (add-hook 'package-menu-mode-hook 'stripe-listify-buffer)
+      (set-frame-size-according-to-resolution))))
 
 (provide 'visual)
