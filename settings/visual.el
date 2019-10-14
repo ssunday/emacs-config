@@ -51,10 +51,6 @@
   :config (add-hook 'prog-mode-hook 'diff-hl-mode)
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
 
-(use-package hlinum
-  :ensure t
-  :config (hlinum-activate))
-
 (eval-after-load 'diff-mode
   '(progn
      (set-face-foreground 'diff-added "green4")
@@ -63,10 +59,6 @@
 (use-package rainbow-delimiters
   :ensure t
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-
-(use-package beacon
-  :ensure t
-  :config (beacon-mode 1))
 
 (use-package smooth-scrolling
   :ensure t
