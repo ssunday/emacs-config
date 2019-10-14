@@ -22,17 +22,28 @@
   (set-face-attribute 'web-mode-block-delimiter-face   nil :foreground "MediumOrchid2")
   (set-face-attribute 'web-mode-block-control-face     nil :foreground "MediumOrchid2")
 
-  (setq web-mode-js-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-
   (setq web-mode-enable-css-colorization t)
+  (setq web-mode-enable-current-column-highlight t)
+
   (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-indent-style 2)
+  (setq web-mode-comment-style 2)
+  (setq web-mode-style-padding 1)
+  (setq web-mode-script-padding 1)
+  (setq web-mode-block-padding 0)
 
-(setq web-mode-content-types-alist '(("jsx" . ".*\\.tsx?")))
+  (setq web-mode-enable-engine-detection t))
+
+(setq web-mode-content-types-alist
+  '(
+     ("jsx" . "\\.js[x]?\\'")
+     ("jsx" . ".*\\.tsx?")
+     )
+  )
+
 (setq web-mode-engines-alist '(("django" . "\\.html\\'")))
-
 (use-package company-web
   :ensure t
   :after company)
