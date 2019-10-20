@@ -26,6 +26,7 @@
 
 ;; Visual
 
+(require 'sidebar)
 (require 'tab)
 (require 'visual)
 (require 'modeline)

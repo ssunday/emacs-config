@@ -46,7 +46,8 @@
   (list
    (cond
     ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
-    ((eq major-mode 'dired-mode) "Directory" )
+    ((eq major-mode 'dired-mode) "Directory")
+    ((eq major-mode 'dired-sidebar-mode) "Sidebars")
     (t "User"))))
 
 (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
