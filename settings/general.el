@@ -11,13 +11,14 @@
             kill-buffer-query-functions))
 
 (setq backup-inhibited t
-      auto-save-default nil
-      create-lockfiles nil
-      x-select-enable-clipboard t
-      confirm-nonexistent-file-or-buffer nil
-      mouse-wheel-progressive-speed nil
-      mac-command-key-is-meta nil
-      mouse-drag-copy-region nil)
+  auto-save-default nil
+  create-lockfiles nil
+  x-select-enable-clipboard t
+  confirm-nonexistent-file-or-buffer nil
+  mouse-wheel-progressive-speed nil
+  mac-command-key-is-meta nil
+  mouse-drag-copy-region nil
+  gc-cons-threshold 20000000)
 
 (global-auto-revert-mode)
 
