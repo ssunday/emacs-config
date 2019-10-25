@@ -48,6 +48,7 @@
   :ensure t
   :after company)
 
+(setq scss-compile-at-save nil)
 (setq css-indent-offset 2)
 
 (provide 'code-web)
