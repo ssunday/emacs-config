@@ -24,6 +24,7 @@
 (require 'code/lisp)
 (require 'code/data)
 (require 'code/elixir)
+(require 'code/haskell)
 (require 'code/js)
 (require 'code/php)
 (require 'code/python)
