@@ -3,7 +3,7 @@
 ## Requirements
 
 - [AG](https://github.com/ggreer/the_silver_searcher): `brew install the_silver_searcher`
-- Emacs
+- Emacs 25+
 
 ## Features
 
@@ -12,7 +12,7 @@
 - Tab bar
 - Company autocompletion
 - Counsel for finding stuff. Also AG.
-- Dark theme
+- Dark theme via [https://github.com/jonathanchu/atom-one-dark-theme](https://github.com/jonathanchu/atom-one-dark-theme)
 - Light weight/simple
 - [Hydras!](https://github.com/abo-abo/hydra)
 
@@ -22,9 +22,12 @@ Programming languages with some more setup than vanilla:
 - Common LISP
 - Clojure
 - JavaScript
+- TypeScript
+- React
 - Haskell
 - PHP
 - Elixir
+- Python
 
 ## Keybindings
 
@@ -45,4 +48,3 @@ The cheat sheet:
 - `s-r` - Find and replace all.
 - `M-%` - Query replace one by one.
 - `M-t` - Sidebar toggle
-- `M-G` - Magit status
