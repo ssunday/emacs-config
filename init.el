@@ -20,6 +20,7 @@
 (require 'code-elixir)
 (require 'code-js)
 (require 'code-php)
+(require 'code-python)
 (require 'code-ruby)
 (require 'code-web)
 (require 'devops)
