@@ -1,3 +1,4 @@
+;; Ruby Packages
 
 (use-package rubocop
   :ensure t)
@@ -8,4 +9,4 @@
 (eval-after-load 'company
   '(push 'company-robe company-backends))
 
-(provide 'code-ruby)
+(provide 'code/ruby)

@@ -6,4 +6,4 @@
 (use-package alchemist
   :ensure t)
 
-(provide 'code-elixir)
+(provide 'code/elixir)

@@ -9,4 +9,4 @@
 
 (add-hook 'php-mode-hook 'php-mode-init)
 
-(provide 'code-php)
+(provide 'code/php)

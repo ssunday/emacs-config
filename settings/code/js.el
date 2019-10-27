@@ -1,4 +1,4 @@
-;;JS development
+;; JS/TS development
 
 (setq js-indent-level 2)
 
@@ -7,4 +7,4 @@
   :config
   (custom-set-variables '(typescript-indent-level 2)))
 
-(provide 'code-js)
+(provide 'code/js)

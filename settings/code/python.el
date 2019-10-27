@@ -5,4 +5,4 @@
     (setq tab-width 2
           python-indent 2)))
 
-(provide 'code-python)
+(provide 'code/python)

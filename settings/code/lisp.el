@@ -24,4 +24,4 @@
 
 (setq lisp-indent-offset 2)
 
-(provide 'code-lisp)
+(provide 'code/lisp)

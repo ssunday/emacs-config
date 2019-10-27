@@ -1,9 +1,8 @@
 (package-initialize)
 
 (setq custom-file "~/.emacs.d/.emacs-custom.el")
-(setq settings-path "~/.emacs.d/settings")
 
-(add-to-list 'load-path settings-path)
+(add-to-list 'load-path "~/.emacs.d/settings")
 
 (require 'packages)
 
@@ -15,15 +14,15 @@
 
 ;; Programming Languages
 
-(require 'code-lisp)
-(require 'code-data)
-(require 'code-elixir)
-(require 'code-js)
-(require 'code-php)
-(require 'code-python)
-(require 'code-ruby)
-(require 'code-web)
-(require 'devops)
+(require 'code/lisp)
+(require 'code/data)
+(require 'code/elixir)
+(require 'code/js)
+(require 'code/php)
+(require 'code/python)
+(require 'code/ruby)
+(require 'code/web)
+(require 'code/devops)
 
 ;; Visual
 
