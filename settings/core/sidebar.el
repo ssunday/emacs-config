@@ -1,11 +1,13 @@
-(use-package dired-sidebar
+(use-package neotree
   :ensure t
-  :bind (("M-t" . dired-sidebar-toggle-sidebar))
-  :commands (dired-sidebar-toggle-sidebar)
+  :bind (("M-t" . neotree-toggle))
   :config
-  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
-  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
-  (setq dired-sidebar-theme 'nerd)
-  (setq dired-sidebar-width 30))
+  (setq neo-smart-open t
+    neo-show-hidden-files t
+    neo-banner-message nil
+    neo-create-file-auto-open t
+    neo-dont-be-alone t
+    neo-vc-integration '(face char)
+    neo-window-fixed-size nil))
 
 (provide 'core/sidebar)
