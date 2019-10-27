@@ -7,16 +7,15 @@
 
 ## Features
 
-- Designed primarily for GUI
-- Server/emacsclient is what this is intended for
-- Tab bar
+- Designed primarily for GUI/emacsclient
+- Tab bar + Sidebar
 - Company autocompletion
-- Counsel for finding stuff. Also AG.
+- [Ivy/Swiper/Counsel](https://github.com/abo-abo/swiper) completion
+- AG integration.
 - Dark theme via [https://github.com/jonathanchu/atom-one-dark-theme](https://github.com/jonathanchu/atom-one-dark-theme)
-- Light weight/simple
 - [Hydras!](https://github.com/abo-abo/hydra)
 
-Programming languages with some more setup than vanilla:
+Programming languages/frameworks with some more setup than vanilla:
 
 - Ruby
 - Common LISP
@@ -28,6 +27,7 @@ Programming languages with some more setup than vanilla:
 - PHP
 - Elixir
 - Python
+- Jekyll
 
 ## Keybindings
 
