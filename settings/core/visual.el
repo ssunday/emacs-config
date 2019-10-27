@@ -75,4 +75,4 @@
       (add-hook 'package-menu-mode-hook 'stripe-listify-buffer)
       (set-frame-size-according-to-resolution))))
 
-(provide 'visual)
+(provide 'core/visual)

@@ -6,13 +6,20 @@
 
 (require 'packages)
 
-;; Core Setup
+;; Core - Setup
 
-(require 'general)
-(require 'completion-ivy)
-(require 'keys-hydra)
+(require 'core/general)
+(require 'core/completion-ivy)
+(require 'core/keys-hydra)
 
-;; Programming Languages
+;; Core - Visual
+
+(require 'core/sidebar)
+(require 'core/tab)
+(require 'core/visual)
+(require 'core/modeline)
+
+;; Code/Programming Languages
 
 (require 'code/lisp)
 (require 'code/data)
@@ -23,12 +30,5 @@
 (require 'code/ruby)
 (require 'code/web)
 (require 'code/devops)
-
-;; Visual
-
-(require 'sidebar)
-(require 'tab)
-(require 'visual)
-(require 'modeline)
 
 (load custom-file)

@@ -65,4 +65,4 @@
 
 (tabbar-mode t)
 
-(provide 'tab)
+(provide 'core/tab)

@@ -82,4 +82,4 @@
     :inherit 'mode-line-face
     :foreground "gray80")
 
-(provide 'modeline)
+(provide 'core/modeline)

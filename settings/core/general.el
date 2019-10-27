@@ -44,7 +44,7 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-;;Auto Completion
+;; Auto Completion
 
 (use-package company
   :ensure t)
@@ -53,13 +53,13 @@
   (setq company-tooltip-limit 10
 	company-idle-delay .2)
 
-;;Indent
+;; Indent
 
 (use-package indent-guide
   :ensure t
   :config (indent-guide-global-mode))
 
-;;Finding/Searching
+;; Finding/Searching
 
 (use-package visual-regexp
   :ensure t)
@@ -90,4 +90,4 @@
 (use-package magit
   :ensure t)
 
-(provide 'general)
+(provide 'core/general)

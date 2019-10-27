@@ -8,4 +8,4 @@
   (setq dired-sidebar-theme 'nerd)
   (setq dired-sidebar-width 30))
 
-(provide 'sidebar)
+(provide 'core/sidebar)

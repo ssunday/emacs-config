@@ -26,4 +26,4 @@
 
   )
 
-(provide 'keys-hydra)
+(provide 'core/keys-hydra)

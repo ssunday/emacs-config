@@ -37,4 +37,4 @@
   (global-set-key (kbd "s-p") 'counsel-git)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file))
 
-(provide 'completion-ivy)
+(provide 'core/completion-ivy)
