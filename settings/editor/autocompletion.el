@@ -1,4 +1,11 @@
-;;Ivy related configurations
+;; Auto Complete related configurations
+
+(use-package company
+  :ensure t)
+
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-tooltip-limit 10
+	company-idle-delay .2)
 
 (use-package flx
   :ensure t)
@@ -37,4 +44,4 @@
   (global-set-key (kbd "s-p") 'counsel-git)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file))
 
-(provide 'core/completion-ivy)
+(provide 'editor/autocompletion)

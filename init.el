@@ -9,15 +9,23 @@
 ;; Core - Setup
 
 (require 'core/general)
-(require 'core/completion-ivy)
+(require 'core/buffers)
 (require 'core/keys-hydra)
-
-;; Core - Visual
-
 (require 'core/sidebar)
 (require 'core/tab)
-(require 'core/visual)
-(require 'core/modeline)
+
+;; Editor config
+
+(require 'editor/autocompletion)
+(require 'editor/searching)
+(require 'editor/whitespace)
+
+;; Visual
+
+(require 'visual/general)
+(require 'visual/daemon)
+(require 'visual/modeline)
+(require 'visual/prog)
 
 ;; Code/Programming Languages
 
@@ -31,5 +39,6 @@
 (require 'code/ruby)
 (require 'code/web)
 (require 'code/devops)
+(require 'code/vcs)
 
 (load custom-file)
