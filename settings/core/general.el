@@ -1,5 +1,8 @@
 ;; General Emacs Settings
 
+(setq gc-cons-threshold 20000000
+  gc-cons-percentage 0.6)
+
 (setq ring-bell-function 'ignore)
 
 (delete-selection-mode 1)
@@ -17,8 +20,7 @@
   confirm-nonexistent-file-or-buffer nil
   mouse-wheel-progressive-speed nil
   mac-command-key-is-meta nil
-  mouse-drag-copy-region nil
-  gc-cons-threshold 20000000)
+  mouse-drag-copy-region nil)
 
 (global-auto-revert-mode)
 
