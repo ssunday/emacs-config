@@ -27,6 +27,9 @@
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
+(when (string= system-type "darwin")
+  (setq dired-use-ls-dired nil))
+
 (use-package smooth-scrolling
   :ensure t
   :config
