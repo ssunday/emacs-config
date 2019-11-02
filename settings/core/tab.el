@@ -1,68 +1,36 @@
-;;Tabbar
+;; Tab Bar
 
-(use-package tabbar
+(use-package centaur-tabs
   :ensure t
-  :bind (("s-<left>" . tabbar-backward)
-	 ("s-<right>" . tabbar-forward))
   :config
-  (set-face-attribute
-   'tabbar-default nil
-   :background "gray20"
-   :foreground "gray20"
-   :height 1.0
-   :box '(:line-width 1 :color "gray20" :style nil))
-  (set-face-attribute
-   'tabbar-unselected nil
-   :background "gray30"
-   :foreground "white"
-   :height 1.0
-   :box '(:line-width 5 :color "gray30" :style nil))
-  (set-face-attribute
-   'tabbar-selected nil
-   :background "gray75"
-   :foreground "black"
-   :height 1.0
-   :box '(:line-width 5 :color "gray75" :style nil))
-  (set-face-attribute
-   'tabbar-highlight nil
-   :background "white"
-   :foreground "black"
-   :underline nil
-   :height 1.0
-   :box '(:line-width 5 :color "white" :style nil))
-  (set-face-attribute
-   'tabbar-button nil
-   :box '(:line-width 1 :color "gray20" :style nil))
-  (set-face-attribute
-   'tabbar-separator nil
-   :height 1.0
-   :background "gray20"
-   :height 0.6)
-  (set-face-attribute 'tabbar-separator nil :height 1.0))
+  (centaur-tabs-headline-match)
+  (setq
+    centaur-tabs-adjust-buffer-order t
+    centaur-tabs-adjust-buffer-order 'left
+    centaur-tabs-style "bar"
+    centaur-tabs-height 32
+    centaur-tabs-gray-out-icons 'buffer
+    centaur-tabs-cycle-scope 'tabs
+    centaur-tabs-close-button "X"
+    centaur-tabs-modified-marker "*")
 
-(require 'tabbar)
+  (set-face-attribute
+    'centaur-tabs-selected nil
+    :background "#31343E"
+    :foreground "#00eac3")
+  (defun centaur-tabs-buffer-groups ()
+    (list
+      (cond
+        ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
+        ((derived-mode-p 'dired-mode) "Directory")
+        (t "User"))))
+  :hook
+  (dired-mode . centaur-tabs-local-mode)
+  (neotree-mode . centaur-tabs-local-mode)
+  :bind
+  ("s-<left>" . centaur-tabs-backward)
+  ("s-<right>" . centaur-tabs-forward))
 
-(defun tabbar-buffer-groups ()
-  (list
-   (cond
-    ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
-    ((eq major-mode 'dired-mode) "Directory")
-    ((eq major-mode 'dired-sidebar-mode) "Sidebars")
-    (t "User"))))
-
-(setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
-
-(defun tabbar-buffer-tab-label (tab)
-  (let ((label  (if tabbar--buffer-show-groups
-		    (format " [%s] " (tabbar-tab-tabset tab))
-		  (format " %s " (tabbar-tab-value tab)))))
-    (if tabbar-auto-scroll-flag
-	label
-      (tabbar-shorten
-       label (max 1 (/ (window-width)
-		       (length (tabbar-view
-				(tabbar-current-tabset)))))))))
-
-(tabbar-mode t)
+(centaur-tabs-mode t)
 
 (provide 'core/tab)
