@@ -8,6 +8,9 @@
 
 ;; Core - Setup
 
+;; https://github.com/Wilfred/ag.el/issues/93#issuecomment-348003505
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+
 (require 'core/general)
 (require 'core/buffers)
 (require 'core/keys-hydra)

@@ -10,7 +10,6 @@
     centaur-tabs-style "bar"
     centaur-tabs-height 32
     centaur-tabs-gray-out-icons 'buffer
-    centaur-tabs-cycle-scope 'tabs
     centaur-tabs-close-button "X"
     centaur-tabs-modified-marker "*")
 
