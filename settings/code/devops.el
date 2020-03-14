@@ -17,4 +17,7 @@
 (use-package docker-compose-mode
   :ensure t)
 
+(use-package terraform-mode
+  :ensure t)
+
 (provide 'code/devops)
