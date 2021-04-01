@@ -1,5 +1,3 @@
-(package-initialize)
-
 (setq custom-file "~/.emacs.d/.emacs-custom.el")
 
 (add-to-list 'load-path "~/.emacs.d/settings")
