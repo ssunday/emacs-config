@@ -38,7 +38,8 @@
 
 (setq web-mode-content-types-alist
   '(
-     ("jsx" . "\\.js[x]?\\'")
+     ("js" . "\\.js[x]?\\'")
+     ("jsx" . ".*\\.jsx?")
      ("jsx" . ".*\\.tsx?")
      )
   )
