@@ -1,4 +1,4 @@
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 (global-hl-line-mode 1)
 
 (when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
