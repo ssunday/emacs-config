@@ -37,6 +37,7 @@
 (require 'code/js)
 (require 'code/php)
 (require 'code/python)
+(require 'code/lua)
 (require 'code/ruby)
 (require 'code/web)
 (require 'code/devops)
