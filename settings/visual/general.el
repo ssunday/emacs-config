@@ -1,5 +1,7 @@
-(global-display-line-numbers-mode t)
 (global-hl-line-mode 1)
+
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 (when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode 0))

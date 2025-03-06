@@ -19,7 +19,7 @@
    (kbd "C-x k")
    (defhydra hydra-kill-buffer
      (:color pink)
-     ("k" kill-this-buffer "kill current buffer")
+     ("k" (kill-buffer (current-buffer)) "kill current buffer")
      ("o" kill-other-buffers "kill other buffers")
      ("q" nil "quit" :color blue))
    )
